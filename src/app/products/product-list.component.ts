@@ -4,7 +4,6 @@ import { IProduct } from './product';
 import { ProductService } from './product.service';
 
 @Component({
-    selector: 'pm-products',
     templateUrl: './product-list.component.html',
     styleUrls: ['./product-list.component.css']
 })
@@ -38,7 +37,7 @@ export class ProductListComponent implements OnInit {
     performFilter(filterBy: string): IProduct[] {
         filterBy = filterBy.toLocaleLowerCase();
         return this.products.filter((product: IProduct) =>
-            product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
+              product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
     }
 
     toggleImage(): void {
@@ -47,10 +46,10 @@ export class ProductListComponent implements OnInit {
 
     ngOnInit(): void {
         this._productService.getProducts()
-            .subscribe(products => {
-                this.products = products;
-                this.filteredProducts = this.products;
-            },
-            error => this.errorMessage = <any>error);
+                .subscribe(products => {
+                    this.products = products;
+                    this.filteredProducts = this.products;
+                },
+                    error => this.errorMessage = <any>error);
     }
 }
